@@ -1,4 +1,4 @@
-CUDA_VISIBLE_DEVICES=0 python demo.py \
+CUDA_VISIBLE_DEVICES=0 python ../demo.py \
   --height 64 \
   --width 256 \
   --voc_type ALLCASES_SYMBOLS \
@@ -12,5 +12,5 @@ CUDA_VISIBLE_DEVICES=0 python demo.py \
   --tps_margins 0.05 0.05 \
   --stn_activation none \
   --num_control_points 20 \
-  --resume /data/mkyang/logs/recognition/aster.pytorch/logs/baseline_aster/baseline_aster/demo.pth.tar \
-  --image_path ./data/demo.png
+  --resume ../data/model_best.pth.tar \
+  --image_path ../data/demo.png

@@ -79,9 +79,9 @@ def createDataset(outputPath, imagePathList, labelList, lexiconList=None, checkV
   print('Created dataset with %d samples' % nSamples)
 
 if __name__ == "__main__":
-  data_dir = '/data/mkyang/datasets/English/benchmark/svtp/'
-  lmdb_output_path = '/data/mkyang/datasets/English/benchmark_lmdbs_new/svt_p_645'
-  gt_file = os.path.join(data_dir, 'gt.txt')
+  data_dir = '/export/home/projects/aster.pytorch/data/data_clean/iiit5k'
+  lmdb_output_path = '/export/home/projects/aster.pytorch/data/IIIT5K_3000'
+  gt_file = os.path.join(data_dir, 'iiit5k_1k_test.txt')
   image_dir = data_dir
   with open(gt_file, 'r') as f:
     lines = [line.strip('\n') for line in f.readlines()]

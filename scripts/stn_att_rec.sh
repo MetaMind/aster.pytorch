@@ -1,6 +1,6 @@
-CUDA_VISIBLE_DEVICES=0,1 python main.py \
-  --synthetic_train_data_dir /data/mkyang/scene_text/recognition/CVPR2016/ /data/mkyang/scene_text/recognition/NIPS2014/ \
-  --test_data_dir /data/mkyang/scene_text/recognition/benchmark_lmdbs_new/IIIT5K_3000/ \
+CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 python ../main.py \
+  --synthetic_train_data_dir /export/share/datasets/vision/ocr/text_recognition/reg_dataset/CVPR2016 /export/share/datasets/vision/ocr/text_recognition/reg_dataset/NIPS2014 \
+  --test_data_dir /export/home/projects/aster.pytorch/data/IIIT5K_3000 \
   --batch_size 1024 \
   --workers 8 \
   --height 64 \
@@ -9,7 +9,7 @@ CUDA_VISIBLE_DEVICES=0,1 python main.py \
   --arch ResNet_ASTER \
   --with_lstm \
   --logs_dir logs/baseline_aster \
-  --real_logs_dir /data/mkyang/logs/recognition/aster.pytorch \
+  --real_logs_dir /export/home/projects/aster.pytorch/data/log \
   --max_len 100 \
   --STN_ON \
   --tps_inputsize 32 64 \

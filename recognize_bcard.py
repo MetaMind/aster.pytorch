@@ -143,8 +143,11 @@ def main(args):
         img_card = cv2.imread(img_path)
         img_card = cv2.cvtColor(img_card, cv2.COLOR_BGR2RGB)
         words = cards[img_name]
+        recognized = []
+        words = words + (recognized,)
         for bboxes in words[0]:
             for idx, bbox in enumerate(bboxes):
+                recognized.append('')
                 if words[1][0][idx] >= args.detection_threshold:
                     img, box_contour = _crop_rotated_rectangle(img_card, bbox)
                     img = Image.fromarray(img)
@@ -166,9 +169,11 @@ def main(args):
                     print('Recognition result: {0}'.format(pred_str[0]))
                     cv2.drawContours(img_card, [box_contour], 0, (0,255,0),2)                    
                     img_card = cv2.putText(img_card, pred_str[0], (int(bbox[0][0]), int(bbox[0][1])), cv2.FONT_HERSHEY_SIMPLEX, 2, [255, 0, 0], 3)
+                    recognized[-1] = pred_str[0]
         img_card = cv2.cvtColor(img_card, cv2.COLOR_RGB2BGR)
         cv2.imwrite(os.path.join(args.image_out_path, img_name), img_card)
 
+    pickle.dump(cards, open(args.detection_out_path, "wb"))
 
 
 if __name__ == '__main__':

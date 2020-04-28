@@ -16,4 +16,5 @@ CUDA_VISIBLE_DEVICES=0 python ../recognize_bcard.py \
   --image_path ../data/image \
   --detection_path ../data/dt.pkl \
   --image_out_path ../data/bcard \
-  --detection_threshold 0.6
+  --detection_out_path ../data/dt_recog.pkl \
+  --detection_threshold 0.3

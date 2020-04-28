@@ -57,7 +57,7 @@ def _crop_rotated_rectangle(image, polygon):
     # directly warp the rotated rectangle to get the straightened rectangle
     warped_image = cv2.warpPerspective(image, M, (width, height))
 
-    return warped_image
+    return warped_image, box
 
 
 def image_process(img, imgH=32, imgW=100, keep_ratio=False, min_ratio=1):
@@ -146,7 +146,7 @@ def main(args):
         for bboxes in words[0]:
             for idx, bbox in enumerate(bboxes):
                 if words[1][0][idx] >= args.detection_threshold:
-                    img = _crop_rotated_rectangle(img_card, bbox)
+                    img, box_contour = _crop_rotated_rectangle(img_card, bbox)
                     img = Image.fromarray(img)
                     img = image_process(img)
                     
@@ -164,6 +164,11 @@ def main(args):
                     pred_rec = output_dict['output']['pred_rec']
                     pred_str, _ = get_str_list(pred_rec, input_dict['rec_targets'], dataset=dataset_info)
                     print('Recognition result: {0}'.format(pred_str[0]))
+                    cv2.drawContours(img_card, [box_contour], 0, (0,255,0),2)                    
+                    img_card = cv2.putText(img_card, pred_str[0], (int(bbox[0][0]), int(bbox[0][1])), cv2.FONT_HERSHEY_SIMPLEX, 2, [255, 0, 0], 3)
+        img_card = cv2.cvtColor(img_card, cv2.COLOR_RGB2BGR)
+        cv2.imwrite(os.path.join(args.image_out_path, img_name), img_card)
+
 
 
 if __name__ == '__main__':

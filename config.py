@@ -45,6 +45,8 @@ parser.add_argument('--image_path', type=str, default='',
                     help='the path of single image, used in demo.py.')
 parser.add_argument('--detection_path', type=str, default='',
                     help='the path of the detection pickle file.')
+parser.add_argument('--image_out_path', type=str, default='',
+                    help='the path of the detection/recognition visualization.')
 parser.add_argument('--detection_threshold', type=float, default=0.6)
 parser.add_argument('--tps_inputsize', nargs='+', type=int, default=[32, 64])
 parser.add_argument('--tps_outputsize', nargs='+', type=int, default=[32, 100])

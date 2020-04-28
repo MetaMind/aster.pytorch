@@ -1,4 +1,4 @@
-CUDA_VISIBLE_DEVICES=0 python ../recognize_bard.py \
+CUDA_VISIBLE_DEVICES=0 python ../recognize_bcard.py \
   --height 64 \
   --width 256 \
   --voc_type ALLCASES_SYMBOLS \
@@ -13,6 +13,7 @@ CUDA_VISIBLE_DEVICES=0 python ../recognize_bard.py \
   --stn_activation none \
   --num_control_points 20 \
   --resume ../data/model_best.pth.tar \
-  --image_path ../data/image
-  --detection_path ../data/dt.pkl
+  --image_path ../data/image \
+  --detection_path ../data/dt.pkl \
+  --image_out_path ../data/bcard \
   --detection_threshold 0.6

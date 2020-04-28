@@ -43,6 +43,9 @@ parser.add_argument('--lexicon_type', type=str, default='0', choices=['0', '50',
                     help='which lexicon associated to image is used.')
 parser.add_argument('--image_path', type=str, default='',
                     help='the path of single image, used in demo.py.')
+parser.add_argument('--detection_path', type=str, default='',
+                    help='the path of the detection pickle file.')
+parser.add_argument('--detection_threshold', type=float, default=0.6)
 parser.add_argument('--tps_inputsize', nargs='+', type=int, default=[32, 64])
 parser.add_argument('--tps_outputsize', nargs='+', type=int, default=[32, 100])
 # model

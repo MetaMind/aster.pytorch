@@ -35,7 +35,16 @@ from lib.utils.labelmaps import get_vocabulary, labels2strs
 global_args = get_args(sys.argv[1:])
 
 
-def _crop_rotated_rectangle(image, polygon):
+def _crop_rotated_rectangle(image, polygon, require_rotate=False):
+    if not require_rotate:
+        x1 = min(polygon[:, 0])
+        y1 = min(polygon[:, 1])
+        x2 = max(polygon[:, 0])
+        y2 = max(polygon[:, 1])
+        box = np.array([[x1, y1], [x2, y1], [x2, y2], [x1, y2]], dtype=np.int0)
+
+        return image[y1:y2, x1:x2, :], box
+
     polygon = np.array(polygon, dtype=np.float32)
     rect = cv2.minAreaRect(polygon)
     box = cv2.boxPoints(rect)

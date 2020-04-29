@@ -170,6 +170,7 @@ def main(args):
                     cv2.drawContours(img_card, [box_contour], 0, (0,255,0),2)                    
                     img_card = cv2.putText(img_card, pred_str[0], (int(bbox[0][0]), int(bbox[0][1])), cv2.FONT_HERSHEY_SIMPLEX, 2, [255, 0, 0], 3)
                     recognized[-1] = pred_str[0]
+        cards[img_name] = words
         img_card = cv2.cvtColor(img_card, cv2.COLOR_RGB2BGR)
         cv2.imwrite(os.path.join(args.image_out_path, img_name), img_card)
 

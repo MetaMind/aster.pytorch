@@ -1,0 +1,18 @@
+CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 python ../main.py \
+  --synthetic_train_data_dir /root/data/CVPR2016 /root/data/NIPS2014 \
+  --test_data_dir /root/data/IIIT5K_3000 \
+  --batch_size 1024 \
+  --workers 8 \
+  --height 64 \
+  --width 256 \
+  --voc_type ALLCASES_SYMBOLS \
+  --arch ResNet_ASTER \
+  --with_lstm \
+  --logs_dir logs/baseline_aster \
+  --real_logs_dir /root/data/log \
+  --max_len 100 \
+  --tps_inputsize 32 64 \
+  --tps_outputsize 32 100 \
+  --tps_margins 0.05 0.05 \
+  --stn_activation none \
+  --num_control_points 20 \

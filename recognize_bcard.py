@@ -160,8 +160,8 @@ def main(args):
                 if words[1][0][idx] >= args.detection_threshold:
                     img, box_contour = _crop_rotated_rectangle(img_card, bbox)
                     img = Image.fromarray(img)
-                    img = image_process(img)
-                    
+                    img = image_process(img, keep_ratio=True)
+
                     with torch.no_grad():
                         img = img.to(device)
                     input_dict = {}
@@ -182,6 +182,11 @@ def main(args):
         cards[img_name] = words
         img_card = cv2.cvtColor(img_card, cv2.COLOR_RGB2BGR)
         cv2.imwrite(os.path.join(args.image_out_path, img_name), img_card)
+
+    try:
+        os.remove(args.detection_out_path)
+    except OSError:
+        pass
 
     pickle.dump(cards, open(args.detection_out_path, "wb"))
 

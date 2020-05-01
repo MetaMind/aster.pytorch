@@ -4,6 +4,7 @@ import torchvision
 
 import sys
 import math
+import pdb
 
 from config import get_args
 global_args = get_args(sys.argv[1:])
@@ -118,6 +119,8 @@ class ResNet_ASTER(nn.Module):
     x5 = self.layer5(x4)
 
     cnn_feat = x5.squeeze(2) # [N, c, w]
+    #pdb.set_trace()
+
     cnn_feat = cnn_feat.transpose(2, 1)
     if self.with_lstm:
       rnn_feat, _ = self.rnn(cnn_feat)

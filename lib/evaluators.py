@@ -15,6 +15,7 @@ from . import evaluation_metrics
 from .evaluation_metrics import Accuracy, EditDistance, RecPostProcess
 from .utils.meters import AverageMeter
 from .utils.visualization_utils import recognition_vis, stn_vis
+import pdb
 
 metrics_factory = evaluation_metrics.factory()
 
@@ -149,5 +150,6 @@ class Evaluator(BaseEvaluator):
   def _forward(self, input_dict):
     self.model.eval()
     with torch.no_grad():
+      #pdb.set_trace()
       output_dict = self.model(input_dict)
     return output_dict

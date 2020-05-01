@@ -16,3 +16,5 @@ CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 python ../main.py \
   --tps_margins 0.05 0.05 \
   --stn_activation none \
   --num_control_points 20 \
+  --width 100 \
+  --height 32
